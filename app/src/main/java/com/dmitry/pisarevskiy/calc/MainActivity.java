@@ -1,15 +1,16 @@
 package com.dmitry.pisarevskiy.calc;
 
-import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IMainView {
     private TextView tvInput;
     private TextView tvOutput;
+    private MainPresenter presenter = new MainPresenter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!tvInput.getText().equals("")) {
+                    presenter.calculateResult(tvInput.getText().toString());
                     try {
                         tvOutput.setText(String.valueOf(Logic.result(tvInput.getText().toString())));
                     } catch (IllegalArgumentException | StringIndexOutOfBoundsException | NullPointerException e) {
@@ -88,5 +90,10 @@ public class MainActivity extends AppCompatActivity {
                 tvInput.setText(str);
             }
         });
+    }
+
+    @Override
+    public void displayResult(String result) {
+        tvOutput.setText(result);
     }
 }
