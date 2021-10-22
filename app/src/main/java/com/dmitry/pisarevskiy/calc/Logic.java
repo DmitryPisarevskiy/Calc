@@ -29,6 +29,16 @@ public class Logic {
         throw new IllegalArgumentException();
     }
 
+    static String textResult(String text) {
+        String s;
+        try {
+            s = String.valueOf(result(text));
+        } catch (IllegalArgumentException | StringIndexOutOfBoundsException | NullPointerException e) {
+            s = "Неверное выражение";
+        }
+        return s;
+    }
+
     public static boolean isFloat(String value) {
         return value.matches("\\d+(\\.\\d+)?");
     }
