@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements IMainView {
     private TextView tvInput;
     private TextView tvOutput;
-    private MainPresenter presenter = new MainPresenter(this);
+    private MainPresenter presenter = new MainPresenter(this, new Logic());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

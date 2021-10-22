@@ -1,7 +1,7 @@
 package com.dmitry.pisarevskiy.calc;
 
 public class Logic {
-    static float result(String text) throws IllegalArgumentException {
+    float result(String text) throws IllegalArgumentException {
         if (text.charAt(0)=='(' && text.charAt(text.length()-1)==')' && checkedBrackets(text.substring(1,text.length()-1))) {
             return (result(text.substring(1,text.length()-1)));
         }
@@ -29,7 +29,7 @@ public class Logic {
         throw new IllegalArgumentException();
     }
 
-    static String textResult(String text) {
+    String textResult(String text) {
         String s;
         try {
             s = String.valueOf(result(text));
@@ -39,7 +39,7 @@ public class Logic {
         return s;
     }
 
-    public static boolean isFloat(String value) {
+    public boolean isFloat(String value) {
         return value.matches("\\d+(\\.\\d+)?");
     }
 
@@ -67,7 +67,7 @@ public class Logic {
         return new String[]{text};
     }
 
-    public static boolean checkedBrackets(String text) {
+    public boolean checkedBrackets(String text) {
         int bracketsCounter=0;
         int i=0;
         while (i<text.length()) {

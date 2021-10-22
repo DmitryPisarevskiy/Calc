@@ -1,7 +1,8 @@
 package com.dmitry.pisarevskiy.calc
 
-class MainPresenter constructor(private val view: IMainView) {
-    fun calculateResult(expression: String){
-        view.displayResult(Logic.textResult(expression))
+class MainPresenter constructor(val view: IMainView,
+                                val logic: Logic) {
+    fun calculateResult(expression: String) {
+        view.displayResult(logic.textResult(expression))
     }
 }
